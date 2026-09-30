@@ -1,0 +1,98 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>PHC Edge Hub — Animated Hardware Demo | GRAM-JARVIS</title>
+<style>
+:root{--bg:#f3f6fa;--card:#fff;--ink:#1e2a3a;--mut:#5d6d82;--hd:#243b63;--navy:#243b63;--btn:#2f6fb0;--tb:#e7f0f9;--gr:#4c9a68;--tg:#e6f3ea;--grt:#2f7048;--am:#d4923a;--rd:#c25b5b;--rdt:#a13c3c;--ln:#dbe4ee;--cl:#a9bdd6;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0f1722;--card:#172232;--ink:#e5ecf5;--mut:#98a8bc;--hd:#cfe0f5;--navy:#1a2b48;--tb:#1c2b40;--tg:#1a2e25;--grt:#7cc79a;--rdt:#f09090;--ln:#26364a;--cl:#3b5474}}
+:root[data-theme=dark]{--bg:#0f1722;--card:#172232;--ink:#e5ecf5;--mut:#98a8bc;--hd:#cfe0f5;--navy:#1a2b48;--tb:#1c2b40;--tg:#1a2e25;--grt:#7cc79a;--rdt:#f09090;--ln:#26364a;--cl:#3b5474}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;font:15px/1.5 Calibri,Arial,sans-serif;background:var(--bg);color:var(--ink)}
+h1,h2,h3{margin:0;color:var(--hd);line-height:1.25}h2{font-size:22px}h3{font-size:16px}p{margin:0}button{font:inherit;cursor:pointer}small{color:var(--mut);font-size:12px}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;display:flex;align-items:center;gap:12px;padding:8px 18px;background:var(--navy);color:#fff}.top small{display:block;color:#b9c8de}.lg{width:34px;height:34px}
+.wrap{max-width:1000px;margin:0 auto;padding:18px 14px 36px}
+.card{background:var(--card);border:1px solid var(--ln);border-radius:14px;box-shadow:0 1px 3px rgba(20,40,70,.06);overflow:hidden}
+.pg{height:4px;background:var(--ln)}.pg i{display:block;height:100%;width:0;background:var(--btn)}
+svg.st{display:block;width:100%;height:auto;background:var(--card)}
+.cap{display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:14px 18px;border-top:1px solid var(--ln)}.cap div{flex:1;min-width:240px}.cap p{color:var(--mut);margin-top:4px}
+.ctl{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.btn{background:var(--btn);color:#fff;border:1px solid var(--btn);border-radius:10px;padding:8px 14px}.btn.ghost{background:transparent;color:var(--hd);border-color:var(--ln)}
+.dots{display:flex;gap:6px}.dots button{width:30px;height:30px;border-radius:50%;border:1px solid var(--ln);background:var(--card);color:var(--hd)}.dots button.on{background:var(--btn);color:#fff;border-color:var(--btn)}
+.parts{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin:16px 0}.parts .card{padding:14px}.parts p{color:var(--mut);margin-top:4px;font-size:14px}
+.cost{padding:16px;display:flex;gap:18px;flex-wrap:wrap;align-items:center;background:var(--tb)}.cost b{font-size:26px;color:var(--hd)}
+.tag{display:inline-block;padding:4px 10px;margin:3px 3px 0 0;border-radius:14px;background:var(--tg);color:var(--grt);font-size:13px}
+.t{fill:var(--ink);font:13px Calibri,Arial,sans-serif}.tm{fill:var(--mut);font:12px Calibri,Arial,sans-serif}.tw{fill:#fff;font:600 11px Calibri,Arial,sans-serif}
+.ln{stroke:var(--mut);stroke-width:2;fill:none;stroke-linecap:round}.fl{fill:none;stroke-width:2.5;stroke-dasharray:7 7;animation:dash .8s linear infinite}@keyframes dash{to{stroke-dashoffset:-14}}
+[data-s]{opacity:0;transition:opacity .5s}.d{opacity:.3;transition:opacity .5s}
+svg.sc1 [data-s~="1"],svg.sc2 [data-s~="2"],svg.sc3 [data-s~="3"],svg.sc4 [data-s~="4"],svg.sc5 [data-s~="5"],svg.sc6 [data-s~="6"]{opacity:1}
+.wf path{fill:none;stroke:var(--btn);stroke-width:4;stroke-linecap:round;opacity:.3}
+svg.sc2 .wf path,svg.sc3 .wf path{animation:wp 1.4s infinite}.wf path:nth-child(2){animation-delay:.25s}.wf path:nth-child(3){animation-delay:.5s}@keyframes wp{50%{opacity:1}}
+.pk{animation-duration:1.6s;animation-iteration-count:infinite;animation-timing-function:linear}
+.pa{animation-name:ma}.pb{animation-name:mb}.pc{animation-name:mc}.pd{animation-name:md}
+@keyframes ma{from{transform:translate(0,0)}to{transform:translate(130px,-15px)}}@keyframes mb{from{transform:translate(0,0)}to{transform:translate(188px,-105px)}}@keyframes mc{from{transform:translate(0,0)}to{transform:translate(-230px,-12px)}}@keyframes md{from{transform:translate(0,0)}to{transform:translate(158px,35px)}}
+.slip{transform:translateY(-92px)}svg.sc4 .slip{animation:out 2.4s ease-out forwards}@keyframes out{to{transform:translateY(0)}}
+.ring{transform-box:fill-box;transform-origin:center;fill:none;stroke:var(--rd);stroke-width:3}svg.sc5 .ring{animation:rg 1.2s infinite}@keyframes rg{from{transform:scale(1);opacity:.8}to{transform:scale(1.12);opacity:0}}
+.led{animation:pl 1.6s infinite}@keyframes pl{50%{opacity:.3}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.slip{transform:none}}
+</style></head><body>
+<header class="top"><svg class="lg" viewBox="0 0 40 40"><circle cx="20" cy="20" r="19" fill="#2f5c93"/><path d="M17 9h6v8h8v6h-8v8h-6v-8H9v-6h8z" fill="#fff"/><path d="M8 34q12-8 24 0" stroke="#6fbf8b" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg><div><b>GRAM-JARVIS · PHC Edge Hub</b><small>Hardware demo, animated. Press play or pick a step.</small></div></header>
+<main class="wrap">
+<div class="card"><div class="pg"><i id="pgi"></i></div>
+<svg id="stage" class="st sc1" viewBox="0 0 800 460" role="img" aria-label="Animated explanation of the PHC Edge Hub">
+<defs><clipPath id="cp"><rect x="350" y="346" width="100" height="112"/></clipPath></defs>
+<!-- cloud -->
+<g class="d" data-s="6"><circle cx="380" cy="62" r="22" fill="var(--cl)"/><circle cx="410" cy="52" r="27" fill="var(--cl)"/><circle cx="440" cy="64" r="20" fill="var(--cl)"/><rect x="380" y="62" width="60" height="22" fill="var(--cl)"/><text class="t" x="410" y="110" text-anchor="middle">ABDM / FHIR cloud</text></g>
+<!-- tower -->
+<g class="d" data-s="2 6"><path class="ln" d="M700 165V100M684 165l16-65 16 65M690 140h20M694 120h12M682 84q18-16 36 0"/><text class="tm" x="700" y="185" text-anchor="middle">Mobile tower</text></g>
+<g data-s="2"><path d="M688 66l24 24M712 66l-24 24" stroke="var(--rd)" stroke-width="4" stroke-linecap="round"/><text x="700" y="208" text-anchor="middle" style="fill:var(--rdt);font:600 13px Calibri,Arial,sans-serif">No internet</text></g>
+<g data-s="6"><circle cx="700" cy="64" r="13" fill="var(--gr)"/><path d="M693 64l5 5 9-10" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/><text x="700" y="208" text-anchor="middle" style="fill:var(--grt);font:600 13px Calibri,Arial,sans-serif">Internet is back</text></g>
+<!-- night -->
+<g data-s="6"><path d="M150 40a20 20 0 1 0 18 28 16 16 0 0 1-18-28z" fill="#e9c46a"/><circle cx="190" cy="40" r="2" fill="#e9c46a"/><circle cx="120" cy="70" r="2" fill="#e9c46a"/><circle cx="205" cy="80" r="2" fill="#e9c46a"/><text class="t" x="150" y="112" text-anchor="middle">Night sync</text></g>
+<!-- villager + phone -->
+<g class="d" data-s="2 3"><circle cx="42" cy="266" r="13" fill="#d9a97f"/><path d="M28 258a14 14 0 0 1 28 0z" fill="#333"/><path d="M16 352q0-52 26-52t26 52z" fill="#5b8f7a"/><rect x="100" y="250" width="70" height="105" rx="12" fill="#243b63"/><rect x="106" y="262" width="58" height="78" rx="6" fill="var(--tb)"/><circle cx="135" cy="292" r="12" fill="var(--btn)"/><rect x="131" y="284" width="8" height="14" rx="4" fill="#fff"/><rect x="114" y="318" width="42" height="6" rx="3" fill="var(--cl)"/><text class="t" x="100" y="378" text-anchor="middle">ASHA / family</text><text class="tm" x="135" y="394" text-anchor="middle">voice app</text></g>
+<path class="fl" data-s="2 3" stroke="var(--btn)" d="M170 300L300 285"/>
+<g data-s="3"><circle class="pk pa" cx="170" cy="300" r="5" fill="var(--btn)"/><circle class="pk pa" style="animation-delay:.5s" cx="170" cy="300" r="5" fill="var(--btn)"/><circle class="pk pa" style="animation-delay:1s" cx="170" cy="300" r="5" fill="var(--btn)"/><text class="tm" x="235" y="262" text-anchor="middle">Telugu voice to text</text><rect x="520" y="234" width="140" height="26" rx="13" fill="#faefdc"/><text x="590" y="251" text-anchor="middle" style="fill:#8a5610;font:600 12px Calibri,Arial,sans-serif">Triage: MEDIUM</text><rect x="520" y="270" width="176" height="26" rx="13" fill="#e6f3ea"/><text x="608" y="287" text-anchor="middle" style="fill:#2f7048;font:600 12px Calibri,Arial,sans-serif">SQLite: saved offline</text></g>
+<!-- wifi -->
+<g class="wf d" data-s="2 3"><path d="M380 208q20-15 40 0"/><path d="M368 194q32-25 64 0"/><path d="M356 180q44-35 88 0"/></g>
+<text class="tm" data-s="2" x="452" y="182">WiFi: GRAM-HUB</text>
+<!-- hub -->
+<g><rect x="300" y="228" width="200" height="102" rx="14" fill="#243b63"/><text class="tw" x="400" y="245" text-anchor="middle">PHC EDGE HUB</text>
+<rect x="318" y="253" width="82" height="60" rx="6" fill="#4c7f66"/><rect x="330" y="263" width="24" height="24" rx="3" fill="#dfe8e2"/><rect x="362" y="266" width="28" height="6" rx="2" fill="#dfe8e2" opacity=".6"/><circle class="led" cx="330" cy="302" r="3.5" fill="#6fbf8b"/><circle class="led" cx="342" cy="302" r="3.5" fill="#e9c46a" style="animation-delay:.4s"/>
+<rect x="412" y="253" width="72" height="26" rx="4" fill="#5b6f8e"/><text class="tw" x="448" y="270" text-anchor="middle">UPS 6 h</text><rect x="412" y="287" width="72" height="26" rx="4" fill="#46618a"/><text class="tw" x="448" y="304" text-anchor="middle">1 TB SSD</text>
+<rect x="328" y="330" width="144" height="34" rx="8" fill="#6b7c93"/><rect x="350" y="343" width="100" height="6" rx="3" fill="#1a2233"/></g>
+<g clip-path="url(#cp)"><g class="slip"><rect x="362" y="346" width="76" height="92" rx="2" fill="#fdfcf8" stroke="#d9d4c5"/><text x="400" y="362" text-anchor="middle" style="fill:#222;font:600 11px Calibri,Arial,sans-serif">TOKEN T-44</text><rect x="380" y="370" width="40" height="40" fill="#222"/><rect x="384" y="374" width="10" height="10" fill="#fdfcf8"/><rect x="406" y="374" width="10" height="10" fill="#fdfcf8"/><rect x="384" y="396" width="10" height="10" fill="#fdfcf8"/><rect x="398" y="388" width="6" height="6" fill="#fdfcf8"/><rect x="368" y="418" width="64" height="4" fill="#bbb"/><rect x="368" y="426" width="44" height="4" fill="#bbb"/></g></g>
+<!-- scene 1 callouts -->
+<g data-s="1"><path class="ln" d="M296 205h-8M300 270h18M496 266h18M496 300h18M326 348h-18" opacity=".6"/><text class="t" x="284" y="209" text-anchor="end">Local WiFi router</text><text class="t" x="296" y="275" text-anchor="end">Raspberry Pi 4</text><text class="t" x="304" y="352" text-anchor="end">Thermal printer</text><text class="t" x="522" y="270">5000 mAh UPS, about 6 h</text><text class="t" x="522" y="304">1 TB local storage</text></g>
+<!-- scene 4 -->
+<g data-s="4"><text class="t" x="456" y="386">Token, medicine slip</text><text class="t" x="456" y="404">and QR referral slip</text><text class="tm" x="456" y="422">printed in Telugu</text></g>
+<!-- scene 5 -->
+<g data-s="5"><rect class="ring" x="296" y="224" width="208" height="110" rx="18"/><path class="fl" stroke="var(--rd)" d="M500 285L658 320"/><circle class="pk pd" cx="500" cy="285" r="6" fill="var(--rd)"/><circle class="pk pd" style="animation-delay:.8s" cx="500" cy="285" r="6" fill="var(--rd)"/><rect x="636" y="238" width="112" height="24" rx="12" fill="#f7e5e5"/><text x="692" y="254" text-anchor="middle" style="fill:#a13c3c;font:600 12px Calibri,Arial,sans-serif">HIGH RISK alert</text></g>
+<g class="d" data-s="5"><rect x="660" y="270" width="64" height="104" rx="12" fill="#243b63"/><rect x="666" y="282" width="52" height="76" rx="6" fill="var(--tb)"/><path d="M692 292v26M692 326v2" stroke="var(--rd)" stroke-width="5" stroke-linecap="round"/><text class="t" x="692" y="394" text-anchor="middle">Dr. Rao, PHC</text><circle cx="692" cy="430" r="16" fill="var(--rd)"/><text class="tw" x="692" y="434" text-anchor="middle">108</text></g>
+<!-- scene 6 -->
+<g data-s="6"><path class="fl" stroke="var(--gr)" d="M500 255L688 150M690 80L460 68"/><circle class="pk pb" cx="500" cy="255" r="5" fill="var(--gr)"/><circle class="pk pb" style="animation-delay:.8s" cx="500" cy="255" r="5" fill="var(--gr)"/><circle class="pk pc" cx="690" cy="80" r="5" fill="var(--gr)"/><circle class="pk pc" style="animation-delay:.8s" cx="690" cy="80" r="5" fill="var(--gr)"/><text class="tm" x="575" y="50" text-anchor="middle">FHIR R4 · AES-256 · TLS 1.3</text></g>
+</svg>
+<div class="cap"><div><h2 id="ct"></h2><p id="cd"></p></div><div class="ctl"><button class="btn ghost" id="pv" aria-label="Previous step">‹</button><button class="btn" id="pp">Pause</button><button class="btn ghost" id="nx" aria-label="Next step">›</button><button class="btn ghost" id="rp">Replay</button><span class="dots" id="ds"></span></div></div></div>
+
+<div class="parts">
+<div class="card"><h3>Raspberry Pi 4</h3><p>Runs FastAPI, SQLite and the TinyLlama triage on the box.</p></div>
+<div class="card"><h3>1 TB storage</h3><p>Months of patient records kept locally.</p></div>
+<div class="card"><h3>5000 mAh UPS</h3><p>About 6 hours of backup through power cuts.</p></div>
+<div class="card"><h3>WiFi router</h3><p>Creates the private network GRAM-HUB. No internet needed.</p></div>
+<div class="card"><h3>Thermal printer</h3><p>Token, medicine and QR referral slips in the local language.</p></div></div>
+<div class="card cost"><div><small>Estimated hub cost per PHC</small><br><b>about ₹25,000 one time</b></div><div style="flex:1;min-width:220px"><p>Sold to state health departments, NGOs and CSR programmes. The farmer never pays.</p><span class="tag">Offline first</span><span class="tag">Voice and print</span><span class="tag">Works with ASHA and PHC</span><span class="tag">ABDM / FHIR ready</span></div></div>
+<p style="margin-top:14px"><small>Animated demonstration of the design. Team INVINCIBLE_RGUKTN · Smart India Hackathon 2026 · SIH26133.</small></p>
+</main>
+<script>
+const $=s=>document.querySelector(s),ST=[
+['Meet the hub','A Raspberry Pi 4, 1 TB storage, a 5000 mAh UPS, a WiFi router and a thermal printer in one box, installed at the PHC.'],
+['Its own WiFi, no internet needed','The hub creates a private WiFi network called GRAM-HUB. Families and ASHA workers connect even when the mobile tower is down.'],
+['Voice, triage and offline save','Telugu, Hindi or Tamil voice becomes text on the hub. TinyLlama triages Low, Medium or High and every record is saved to local SQLite.'],
+['It prints trust','Token, medicine and referral slips print in the local language with a QR code. Villagers trust paper, and the QR tracks the referral.'],
+['Red alert for high risk','A high-risk case sends an SMS and IVR alert to the PHC doctor and to 108 straight away, even on a basic 2G signal.'],
+['Night sync to the cloud','When the internet returns, usually at night, the hub syncs all records to the ABDM / FHIR cloud so history follows the patient.']],
+D=6000;let i=0,t=0,run=1;
+$('#ds').innerHTML=ST.map((_,k)=>`<button data-k="${k}" aria-label="Step ${k+1}">${k+1}</button>`).join('');
+function set(n){i=(n+ST.length)%ST.length;t=0;$('#stage').setAttribute('class','st sc'+(i+1));$('#ct').textContent=(i+1)+'. '+ST[i][0];$('#cd').textContent=ST[i][1];[...$('#ds').children].forEach((b,k)=>b.classList.toggle('on',k==i));$('#pgi').style.width='0'}
+$('#ds').onclick=e=>{if(e.target.dataset.k)set(+e.target.dataset.k)};
+$('#pv').onclick=()=>set(i-1);$('#nx').onclick=()=>set(i+1);
+$('#pp').onclick=()=>{run=!run;$('#pp').textContent=run?'Pause':'Play'};
+$('#rp').onclick=()=>{run=1;$('#pp').textContent='Pause';set(0)};
+setInterval(()=>{if(!run)return;t+=100;$('#pgi').style.width=Math.min(100,t/D*100)+'%';if(t>=D)set(i+1)},100);
+set(0);
+</script></body></html>
